@@ -1,0 +1,4 @@
+status,continent,continentCode,country,countryCode,region,regionName,city,lat,lon,isp,org,as,asname,mobile,proxy,hosting,query
+success,Europe,EU,Italy,IT,62,Lazio,Monte Porzio Catone,41.8198,12.7129,Consortium GARR,Consorzio Interuniversitario Sistemi Integrati per l'Accesso - CISIA,AS137 Consortium GARR,ASGARR,False,False,False,90.147.201.1
+success,Europe,EU,Italy,IT,52,Tuscany,Peccioli,43.5512,10.7123,Dev Italia srl,IP Devitalia Xdsl,AS44747 Dev Italia srl,DEVITALIA-SRL,False,False,False,62.205.6.182
+success,Europe,EU,Italy,IT,45,Emilia-Romagna,Ravenna,44.4075,12.1989,Seflow S.N.C. Di Marco Brame' & C.,virtual solution srl,AS49367 Seflow S.N.C. Di Marco Brame' & C.,ASSEFLOW,False,False,True,91.203.220.254

@@ -1,6 +1,6 @@
 ####GIANLUCA COMETA - CISIA#####
 import csv
-import pandas as pd
+import time
 from requests_ratelimiter import LimiterSession
 
 ###FROM GEOIPPlotter###
@@ -57,7 +57,7 @@ def get_ip(ip_file):
     with contextlib.closing(ip_file):
         return [line.strip() for line in ip_file]
 
-session = LimiterSession(per_minute=40)
+session = LimiterSession(per_minute=70)
 def geo(ip_list=[], lats=[], lons=[]):
     file_name = 'test.csv'
     my_file = open(file_name, 'w', encoding='utf-8')
@@ -66,9 +66,15 @@ def geo(ip_list=[], lats=[], lons=[]):
 
     for ip in ip_list:
         try:
+            time.sleep(0.40)
             loc = session.get('http://ip-api.com/json/%s?fields=24837887' % ip)
             print(ip)
+            print(loc.headers)
             data = loc.json()
+            if int(loc.headers['X-Rl']) == 1 or int(loc.headers['X-Rl']) == 0:
+                time.sleep(10)
+                print("X-Rl RAGGIUNTO - WAIT")
+
             #print(data.keys())
             if run_once_header == 0:
                 my_file = open(file_name, 'w', encoding='utf-8')
@@ -76,8 +82,6 @@ def geo(ip_list=[], lats=[], lons=[]):
                 run_once_header = 1
             writer.writerow(data.values())
             my_file.close()
-
-
         except Exception:
             print("Unable to process IP: %s" % ip)
             continue
